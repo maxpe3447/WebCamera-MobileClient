@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:viewmodel="clr-namespace:WebCameraClient.ViewModel" 
+             x:DataType="viewmodel:MonitorPageViewModel"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="WebCameraClient.Views.MonitorPageView"
+             Background="#78A5A3">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid RowDefinitions="400,*">
+                <ffimageloading:CachedImage Grid.Row="0"
+                                            Source="{Binding MainImg}"/>
+
+                <Label  Grid.Row="1" Text="{Binding LText}"/>
+            </Grid>
+            <Line BackgroundColor="#444C5C" 
+                      HeightRequest="3"/>
+            <Grid ColumnDefinitions="*,*,*"
+                  RowDefinitions="*,*,*">
+                <Button Text="Start show"
+                        Grid.Row="0"
+                        Background="#444C5C"
+                        TextColor="#E1B16A"
+                        BorderColor="#CE5A57"
+                        BorderWidth="2"
+                        Command="{Binding StartShowCommand}"/>
+                <Button Text="Stop show"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        BackgroundColor="#444C5C"
+                        TextColor="#E1B16A"
+                         BorderColor="#CE5A57"
+                        BorderWidth="2"
+                        Command="{Binding StopShowCommand}"/>
+
+                <Button Text="Start Record"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Background="#444C5C"
+                        TextColor="#E1B16A"
+                        FontSize="13"
+                        BorderColor="#CE5A57"
+                        BorderWidth="2"
+                        Command="{Binding StartRecordCommand}"/>
+
+                <Button Text="Stop Record"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        BackgroundColor="#444C5C"
+                        TextColor="#E1B16A"
+                         BorderColor="#CE5A57"
+                        BorderWidth="2"
+                        Command="{Binding StopRecordCommand}"/>
+                <Button Text="Find peoples"
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        BackgroundColor="#444C5C"
+                        TextColor="#E1B16A"
+                        FontSize="13"
+                         BorderColor="#CE5A57"
+                        BorderWidth="2"
+                        Command="{Binding PeopleSearchCommand}"/>
+                <Picker Grid.Column="0"
+                        Grid.Row="2"
+                        Grid.ColumnSpan="3"
+                        Title="Select camera"
+                        Background="#444C5C"
+                        BackgroundColor="#444C5C"
+                        TextColor="#E1B16A"
+                        TitleColor="#E1B16A"
+                        HorizontalTextAlignment="Center"
+                        ItemsSource="{Binding CamerasList}"
+                        SelectedItem="{Binding SelectedWebCamera}"/>
+
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
